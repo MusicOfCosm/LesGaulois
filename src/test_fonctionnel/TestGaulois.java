@@ -20,5 +20,9 @@ public class TestGaulois {
 		asterix.frapper(minus);
 		asterix.frapper(minus);
 		asterix.frapper(minus);
+		
+		System.out.println("\n---------------\n");
+		
+		
 	}
 }
