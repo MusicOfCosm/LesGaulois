@@ -1,11 +1,20 @@
 package gaulois;
 
+import java.util.Objects;
+
 public class Druide {
 	private String nom;
 	private int force;
-	
-	public void parler(String texte) {
-		System.out.println(prendreParole() + "« " + texte + " »");
+    private Chaudron chaudron = new Chaudron();
+
+    public Druide(String nom, int force) {
+        this.nom = nom;
+        this.force = force;
+    }
+
+
+    public void parler(String texte) {
+        System.out.println(prendreParole() + "Â« " + texte + " Â»");
 	}
 	
 	private String prendreParole() {
@@ -13,31 +22,30 @@ public class Druide {
 	}
 	
 	public void fabriquerPotion(int quantite, int forcePotion) {
-		Chaudron chaudron = new Chaudron();
-		chaudron.remplirChaudron(quantite, forcePotion);
+		this.chaudron.remplirChaudron(quantite, forcePotion);
 		
-		parler("J'ai concocté " + quantite + " doses de potion magique. " +
+		parler("J'ai concoctÃ© " + quantite + " doses de potion magique. " +
 			   "Elle a une force de " + forcePotion + ".");
 	}
-	
+
 	public void booster(Gaulois gaulois) {
-		Chaudron chaudron = new Chaudron();
-		boolean contientPotion = chaudron.resterPotion();
+		boolean contientPotion = this.chaudron.resterPotion();
 		String nomGaulois = gaulois.getNom();
 		
 		if (contientPotion) {
-			if (nomGaulois == "Obélix") {
-				parler("Non " + nomGaulois + ". Non !... Et tu le sais très bien !");
-			}
-			int forcePotion = chaudron.prendreLouche();
-			gaulois.boirePotion(forcePotion);
-			parler("Tiens " + nomGaulois + " un peu de potion magique.");
+			if (Objects.equals(nomGaulois, "ObÃ©lix")) {
+				parler("Non " + nomGaulois + ". Non !... Et tu le sais trÃ¨s bien !");
+			} else {
+                int forcePotion = this.chaudron.prendreLouche();
+                gaulois.boirePotion(forcePotion);
+                parler("Tiens " + nomGaulois + " un peu de potion magique.");
+            }
 		} else {
-			parler("Désolé " + nomGaulois + " il n'y a plus une seule goutte de potion.");
+			parler("DÃ©solÃ© " + nomGaulois + " il n'y a plus une seule goutte de potion.");
 		}
 	}
 
 	public String getNom() {
-		return nom;
+		return this.nom;
 	}
 }

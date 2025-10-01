@@ -10,15 +10,15 @@ public class Romain {
 	}
 	
 	public String getNom() {
-		return nom;
+		return this.nom;
 	}
 	
 	public void parler(String texte) {
-		System.out.println(prendreParole() + "« " + texte + " »");
+		System.out.println(prendreParole() + "Â« " + texte + " Â»");
 	}
 	
 	private String prendreParole() {
-		return "Le romain " + nom + " : ";
+		return "Le romain " + this.nom + " : ";
 	}
 
 	public void recevoirCoup(int forceCoup) {
@@ -26,7 +26,7 @@ public class Romain {
 		if (this.force < 1) {
 			parler("J'abandonne !");
 		} else {
-			parler("Aïe");
+			parler("AÃ¯e");
 		}
 	}
 }
