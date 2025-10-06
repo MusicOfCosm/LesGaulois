@@ -14,7 +14,7 @@ public class Romain {
 	}
 	
 	public void parler(String texte) {
-		System.out.println(prendreParole() + "Â« " + texte + " Â»");
+		System.out.println(prendreParole() + "« " + texte + " »");
 	}
 	
 	private String prendreParole() {
@@ -26,7 +26,7 @@ public class Romain {
 		if (this.force < 1) {
 			parler("J'abandonne !");
 		} else {
-			parler("AÃ¯e");
+			parler("Aïe");
 		}
 	}
 }
