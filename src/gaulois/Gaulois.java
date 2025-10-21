@@ -22,11 +22,11 @@ public class Gaulois {
 	}
 	
 	public void parler(String texte) {
-		System.out.println(prendreParole() + "« " + texte + " »");
+		System.out.println(prendreParole() + "Â« " + texte + " Â»");
 	}
 	
 	private String prendreParole() {
-		return "Le gaulois " + this.nom + " : ";
+		return "Le Gaulois " + this.nom + " : ";
 	}
 	
 	public String toString() {
@@ -35,7 +35,7 @@ public class Gaulois {
 	
 	public void frapper(Romain romain) {
 		String nomRomain = romain.getNom();
-		System.out.println(nom + " envoie un grand coup dans la mâchoire de " + nomRomain);
+		System.out.println(nom + " envoie un grand coup dans la mÃ¢choire de " + nomRomain);
 		
 		int forceCoup = force * this.effetPotion / 3;
 		romain.recevoirCoup(forceCoup);
@@ -48,18 +48,19 @@ public class Gaulois {
 	}
 	
 	public void sePresenter() {
-		if (this.village.getNom() == null) {
-			parler("Bonjour, je m'appelle " + this.nom + ". Je voyage de villages en villages.");
+		String intro = "Bonjour, je m'appelle ";
+		if (this.village == null) {
+			parler(intro + this.nom + ". Je voyage de villages en villages.");
 		} else if (Objects.equals(this.village.getChef(), this)) {
-			parler("Bonjour, je m'appelle " + this.nom + ". Je suis le chef du village " + this.village.getNom() + ".");
+			parler(intro + this.nom + ". Je suis le chef du village " + this.village.getNom() + ".");
 		} else {
-			parler("Bonjour, je m'appelle " + this.nom + ". J'habite le village " + this.village.getNom() + ".");
+			parler(intro + this.nom + ". J'habite le village " + this.village.getNom() + ".");
 		}
 	}
 	
 	
 	public static void main(String[] args) {
-		Gaulois asterix = new Gaulois("Astérix", 8);
+		Gaulois asterix = new Gaulois("AstÃ©rix", 8);
 		System.out.println(asterix);
 	}	
 }

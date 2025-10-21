@@ -27,3 +27,4 @@ replay_pid*
 # others
 .metadata/
 .DS_Store
+.settings/

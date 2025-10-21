@@ -14,7 +14,7 @@ public class Druide {
 
 
     public void parler(String texte) {
-        System.out.println(prendreParole() + "« " + texte + " »");
+        System.out.println(prendreParole() + "Â« " + texte + " Â»");
 	}
 	
 	private String prendreParole() {
@@ -24,7 +24,7 @@ public class Druide {
 	public void fabriquerPotion(int quantite, int forcePotion) {
 		this.chaudron.remplirChaudron(quantite, forcePotion);
 		
-		parler("J'ai concocté " + quantite + " doses de potion magique. " +
+		parler("J'ai concoctÃ© " + quantite + " doses de potion magique. " +
 			   "Elle a une force de " + forcePotion + ".");
 	}
 
@@ -33,15 +33,15 @@ public class Druide {
 		String nomGaulois = gaulois.getNom();
 		
 		if (contientPotion) {
-			if (Objects.equals(nomGaulois, "Obélix")) {
-				parler("Non " + nomGaulois + ". Non !... Et tu le sais très bien !");
+			if (Objects.equals(nomGaulois, "ObÃ©lix")) {
+				parler("Non " + nomGaulois + ". Non !... Et tu le sais trÃ¨s bien !");
 			} else {
                 int forcePotion = this.chaudron.prendreLouche();
                 gaulois.boirePotion(forcePotion);
                 parler("Tiens " + nomGaulois + " un peu de potion magique.");
             }
 		} else {
-			parler("Désolé " + nomGaulois + " il n'y a plus une seule goutte de potion.");
+			parler("DÃ©solÃ© " + nomGaulois + " il n'y a plus une seule goutte de potion.");
 		}
 	}
 

@@ -22,6 +22,8 @@ public class Village {
 	public void ajouterVillageois(Gaulois gaulois) {
 		this.villageois[this.nbVillageois] = gaulois;
 		this.nbVillageois++;
+		
+		gaulois.setVillage(this);
 	}
 	
 	public Gaulois trouverVillageois(int numVillageois) {
@@ -33,8 +35,8 @@ public class Village {
 	}
 	
 	public void afficherVillage() {
-		System.out.println("Dans le village « " + this.nom + " » du chef " + this.chef +
-				" vivent les légendaires gaulois :");
+		System.out.println("Dans le village Â« " + this.nom + " Â» du chef " + this.chef +
+				" vivent les lÃ©gendaires gaulois :");
 		for (int i = 0; i < this.nbVillageois; i++) {
 			System.out.println("- " + villageois[i]);
 		}
@@ -42,19 +44,26 @@ public class Village {
 	
 	public static void main(String[] args) {
 		Gaulois abraracourcix = new Gaulois("Abraracourcix", 6);
-		Village village = new Village("Village des Irréductibles", abraracourcix, 30);
+		Village village = new Village("Village des IrrÃ©ductibles", abraracourcix, 30);
 		abraracourcix.setVillage(village);
 		
-		Gaulois asterix = new Gaulois("Astérix", 8);
+		Gaulois asterix = new Gaulois("AstÃ©rix", 8);
 		village.ajouterVillageois(asterix);
 		
-//		Gaulois gaulois = village.trouverVillageois(1);
-//		System.out.println(gaulois);
-//		gaulois = village.trouverVillageois(2);
-//		System.out.println(gaulois);
+		Gaulois obelix = new Gaulois("ObÃ©lix", 25);
+		village.ajouterVillageois(obelix);
+		
+		Gaulois doublepolemix = new Gaulois("DoublepolÃ©mix", 4);
+		
+		Gaulois gaulois = village.trouverVillageois(1);
+		System.out.println(gaulois);
+		gaulois = village.trouverVillageois(2);
+		System.out.println(gaulois);
 		
 		village.afficherVillage();
 		
+		abraracourcix.sePresenter();
 		asterix.sePresenter();
+		doublepolemix.sePresenter();
 	}
 }
