@@ -1,14 +1,16 @@
 package gaulois;
 
 import java.util.Objects;
+import objets.Equipement;
 
 public class Gaulois {
 	private String nom;
-//	private int force;
 	private int effetPotion = 1;
 	private Village village;
-	private int force, nb_trophees;
-	private Equipement trophees[] = new Equipement[100];
+	
+	private int force;
+	private int nbTrophees;
+	private Equipement[] trophees = new Equipement[100];
 	
 	public Gaulois(String nom, int force) {
 		this.nom = nom;
@@ -24,38 +26,24 @@ public class Gaulois {
 	}
 	
 	public void parler(String texte) {
-		System.out.println(prendreParole() + "Â« " + texte + " Â»");
+		System.out.println(prendreParole() + "« " + texte + " »");
 	}
-	
-//	private String prendreParole() {
-//		return "Le Gaulois " + this.nom + " : ";
-//	}
+
 	private String prendreParole() {
-		String texte = "Le gaulois " + nom + " : ";
-		return texte;
+		return "Le gaulois " + nom + " : ";
 	}
 	
 	public String toString() {
 		return this.nom;
 	}
 	
-//	public void frapper(Romain romain) {
-//		String nomRomain = romain.getNom();
-//		System.out.println(nom + " envoie un grand coup dans la mÃ¢choire de " + nomRomain);
-//		
-//		int forceCoup = force * this.effetPotion / 3;
-//		romain.recevoirCoup(forceCoup);
-//		if (effetPotion > 1)
-//			effetPotion--;
-//	}
 	public void frapper(Romain romain) {
 		System.out.println(nom + " envoie un grand coup dans la mâchoire de " +
 		romain.getNom());
-		Equipement trophees[] = romain.recevoirCoup((force / 3) * effetPotion);
-		for (int i = 0; trophees != null && i < trophees.length; i++, nb_trophees++) {
-			this.trophees[nb_trophees] = trophees[i];
+		Equipement[] tropheesRecu = romain.recevoirCoup((force / 3) * effetPotion);
+		for (int i = 0; tropheesRecu != null && i < tropheesRecu.length; i++, nbTrophees++) {
+			this.trophees[nbTrophees] = tropheesRecu[i];
 		}
-		return;
 	}
 	
 	public void boirePotion(int forcePotion) {
@@ -75,7 +63,7 @@ public class Gaulois {
 	
 	
 	public static void main(String[] args) {
-		Gaulois asterix = new Gaulois("AstÃ©rix", 8);
+		Gaulois asterix = new Gaulois("Astérix", 8);
 		System.out.println(asterix);
 	}	
 }
