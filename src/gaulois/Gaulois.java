@@ -26,7 +26,7 @@ public class Gaulois {
 	}
 	
 	public void parler(String texte) {
-		System.out.println(prendreParole() + "« " + texte + " »");
+		System.out.println(prendreParole() + "Â« " + texte + " Â»");
 	}
 
 	private String prendreParole() {
@@ -38,7 +38,7 @@ public class Gaulois {
 	}
 	
 	public void frapper(Romain romain) {
-		System.out.println(nom + " envoie un grand coup dans la mâchoire de " +
+		System.out.println(nom + " envoie un grand coup dans la mÃ¢choire de " +
 		romain.getNom());
 		Equipement[] tropheesRecu = romain.recevoirCoup((force / 3) * effetPotion);
 		for (int i = 0; tropheesRecu != null && i < tropheesRecu.length; i++, nbTrophees++) {
@@ -62,8 +62,23 @@ public class Gaulois {
 	}
 	
 	
+	public void faireUneDonation(Musee musee) {
+		if (this.nbTrophees > 0) {
+			String texte = "Je donne au musÃ©e tous mes trophÃ©es :";
+			for (int i = 0; i < this.nbTrophees; ++i) {
+				texte += "\n- " + trophees[i];
+				musee.donnerTrophees(this, trophees[i]);
+				trophees[i] = null;
+			}
+			this.nbTrophees = 0;
+			
+			parler(texte);
+		}
+	}
+	
+	
 	public static void main(String[] args) {
-		Gaulois asterix = new Gaulois("Astérix", 8);
+		Gaulois asterix = new Gaulois("AstÃ©rix", 8);
 		System.out.println(asterix);
 	}	
 }
